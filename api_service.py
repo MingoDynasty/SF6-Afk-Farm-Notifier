@@ -3,6 +3,7 @@ import logging
 
 import requests
 
+from config import config
 from model import WinRateResponse
 
 logger = logging.getLogger(__name__)
@@ -13,14 +14,11 @@ payload = json.dumps(
     {"targetShortId": 2885430127, "targetSeasonId": 10, "targetModeId": 2, "lang": "en"}
 )
 
-# TODO: fill these in, maybe from config file?
-buckler_id = ""
-cookie = ""
 headers = {
     "Host": "www.streetfighter.com",
     "host": "www.streetfighter.com",
     "Accept": "*/*",
-    "Cookie": cookie,
+    "Cookie": f"buckler_id={config.buckler_id}; buckler_r_id={config.buckler_r_id}; buckler_praise_date={config.buckler_praise_date}",
     "Origin": "https://www.streetfighter.com",
     "Connection": "keep-alive",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0",
