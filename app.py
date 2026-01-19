@@ -1,19 +1,25 @@
 import logging.config
 import sys
+import time
+
+import schedule
+from config import config
 
 from task import do_task
 
 # Logging setup
 logging.basicConfig(
     stream=sys.stdout,
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
 )
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    logger.info("Starting...")
+    logger.info("Scheduling task for every %s seconds...", config.polling_interval)
+    schedule.every(config.polling_interval).seconds.do(do_task)
+    schedule.run_all()
 
-    # TODO: set this up as a Scheduled Task, running periodically.
-    do_task()
-    logger.info("Finished.")
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
