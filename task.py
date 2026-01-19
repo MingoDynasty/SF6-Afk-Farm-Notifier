@@ -59,7 +59,7 @@ def do_task() -> None:
             previous_battle_count,
             current_battle_count,
         )
-        if current_battle_count >= 100 > previous_battle_count:
+        if current_battle_count >= 100:
             message = f"Finished Master color reward for character: {character}"
             logger.info(message)
             notifications_to_send.append(message)
@@ -77,3 +77,4 @@ def do_task() -> None:
     while len(notifications_to_send) > 0:
         message = notifications_to_send.popleft()
         send_message(message)
+    return
