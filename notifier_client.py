@@ -11,5 +11,4 @@ user = app.get_user(config.pushover_user_key)
 
 
 def send_message(message: str):
-    logger.info("Sending message: %s", message)
     return user.send_message(message)
