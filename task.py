@@ -34,6 +34,11 @@ def do_task() -> None:
         logger.error(message, exc_info=True)
         send_message(message)
         return
+    except Exception:
+        message = "Caught generic Exception. This isn't an HTTPError? Capcom Buckler website must be completely borked."
+        logger.error(message, exc_info=True)
+        send_message(message)
+        return
 
     current_character_to_battle_count = SortedDict()
     for character_win_rate in win_rate_response.character_win_rates:
