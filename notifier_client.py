@@ -6,8 +6,9 @@ from config import config
 
 logger = logging.getLogger(__name__)
 
-app = Application(config.pushover_app_key)
-user = app.get_user(config.pushover_user_key)
+if config.pushover_enabled:
+    app = Application(config.pushover_app_key)
+    user = app.get_user(config.pushover_user_key)
 
 
 # TODO: this will blindly fire off messages.
@@ -18,4 +19,6 @@ user = app.get_user(config.pushover_user_key)
 #  before sending a new (emergency) message. This helps ensure 1 message per 1 incident, instead of
 #  multiple messages for each incident.
 def send_message(message: str):
+    if not config.pushover_enabled:
+        return None
     return user.send_message(message)

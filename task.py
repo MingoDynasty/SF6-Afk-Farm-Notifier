@@ -32,7 +32,7 @@ def do_task() -> None:
     except HTTPError:
         message = "Capcom Buckler website down?"
         logger.error(message, exc_info=True)
-        notifications_to_send.append(message)
+        send_message(message)
         return
 
     current_character_to_battle_count = SortedDict()

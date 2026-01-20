@@ -19,6 +19,7 @@ class ConfigData:
     buckler_id: str
     buckler_r_id: str
     buckler_praise_date: int
+    pushover_enabled: bool
     pushover_app_key: str
     pushover_user_key: str
 
