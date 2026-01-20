@@ -18,5 +18,6 @@ buckler_r_id = ""
 buckler_praise_date = 1234567890123
 
 # Pushover configuration
+pushover_enabled = true
 pushover_app_key = ""
 pushover_user_key = ""
